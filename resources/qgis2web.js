@@ -6,13 +6,13 @@ var map = new ol.Map({
     view: new ol.View({
          maxZoom: 28, minZoom: 1, projection: new ol.proj.Projection({
             code: 'EPSG:3765',
-            //extent: [264879.391381, 4696733.651179, 725879.226541, 5155144.750711],
+            //extent: [-22982835.350288, -32963575.295723, 27358086.228888, 26513291.310785],
             units: 'm'})
     })
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([175446.955727, 4630431.442238, 956375.485041, 5219642.656663], map.getSize());
+map.getView().fit([-358553.117425, 4208009.709456, 1533601.313459, 5551016.934456], map.getSize());
 
 //full zooms only
 map.getView().setProperties({constrainResolution: true});
@@ -503,7 +503,7 @@ map.addControl(Title)
 //layer search
 
 var searchLayer = new SearchLayer({
-    layer: lyr__1,
+    layer: lyr__2,
     colName: 'Search',
     zoom: 10,
     collapsed: true,
