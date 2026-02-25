@@ -45,6 +45,7 @@ var lyr__2 = new ol.layer.Vector({
 // ---- CLIPPING: clip satellite to country shape ----
 lyr_GoogleSatellite_0.on('prerender', function(event) {
     var ctx = event.context;
+    var pixelRatio = event.frameState.pixelRatio;
     ctx.save();
     ctx.beginPath();
     var features = jsonSource_hr_shape_1.getFeatures();
@@ -57,9 +58,9 @@ lyr_GoogleSatellite_0.on('prerender', function(event) {
                 ring.forEach(function(coord, i) {
                     var px = ol.transform.apply(event.frameState.coordinateToPixelTransform, coord);
                     if (i === 0) {
-                        ctx.moveTo(px[0], px[1]);
+                        ctx.moveTo(px[0] * pixelRatio, px[1] * pixelRatio);
                     } else {
-                        ctx.lineTo(px[0], px[1]);
+                        ctx.lineTo(px[0] * pixelRatio, px[1] * pixelRatio);
                     }
                 });
                 ctx.closePath();
