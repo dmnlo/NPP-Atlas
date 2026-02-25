@@ -49,7 +49,8 @@ lyr_GoogleSatellite_0.on('prerender', function(event) {
     ctx.beginPath();
     var features = jsonSource_hr_shape_1.getFeatures();
     features.forEach(function(feature) {
-        var geometry = feature.getGeometry().clone().transform('EPSG:3765', map.getView().getProjection());
+        var geometry = feature.getGeometry().clone().transform('EPSG:3765', 'EPSG:4326');
+        geometry = geometry.transform('EPSG:4326', 'EPSG:3857');
         var coordinates = geometry.getCoordinates();
         coordinates.forEach(function(polygon) {
             polygon.forEach(function(ring) {
